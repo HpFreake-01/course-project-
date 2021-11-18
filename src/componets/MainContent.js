@@ -1,8 +1,9 @@
-import React from 'react'
+import React from 'react';
+import mn from './main-content.module.css'
 
 export const MainContent = () => {
     return (
-        <div className="main-content">
+        <div className={mn.main_content}>
             main content
         </div>
     )

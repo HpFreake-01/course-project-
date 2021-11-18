@@ -1,8 +1,9 @@
-import React from 'react'
+import React from 'react';
+import h from './header.module.css';
 
 export const Header = () => {
     return (
-        <div className="header">Header</div>
+        <div className={h.header}>Header</div>
     )
 }
 

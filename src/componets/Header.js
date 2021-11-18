@@ -2,9 +2,7 @@ import React from 'react'
 
 export const Header = () => {
     return (
-        <div>
-            header
-        </div>
+        <div className="header">Header</div>
     )
 }
 

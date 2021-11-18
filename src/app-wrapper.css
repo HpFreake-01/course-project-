@@ -1,0 +1,23 @@
+.app-wrapper{
+    display: grid;
+    grid-template-areas:
+   "header header"
+   "sidebar content";
+   grid-template-columns: 2fr 10fr;
+}
+
+.header{
+    grid-area: header;
+    background-color: blue;
+    height: 70px;
+}
+.main-content{
+    grid-area: content;
+    background-color: burlywood;
+    height: 400px;
+}
+.sidebar{
+    grid-area: sidebar;
+    background-color: cadetblue;
+    height: 400px;
+}

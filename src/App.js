@@ -1,13 +1,15 @@
-import './App.css';
-import Footer from './Footer';
-import Header from './Header';
+import { isValidElement } from 'react';
+import './app-wrapper.css';
+import Header from './componets/Header';
+import MainContent from './componets/MainContent';
+import Sidebar from './componets/Sidebar';
 
 const App = () =>{
   return(
-    <div className="App">
+    <div className="app-wrapper">
       <Header/>
-      main content
-      <Footer/>
+      <MainContent/>
+      <Sidebar/>
     </div>
   )
 }

@@ -3,3 +3,9 @@
     background-color: cadetblue;
     height: 400px;
 }
+.item{
+    color: white;
+}
+.item.active{
+    color: gold;
+}

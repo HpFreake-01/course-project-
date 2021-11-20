@@ -5,13 +5,13 @@ export const Sidebar = () => {
     return (
         <div className={sb.sidebar}>
             <div className={`${sb.item} ${sb.active}`}>
-                <a>Profile</a>
+                <a href='/profile'>Profile</a>
             </div>
             <div className={sb.item}>
-                <a>Message</a>
+                <a href='/dialogs'>Dialogs</a>
             </div>
             <div className={sb.item}>
-                <a>News</a>
+                <a href='/news'>News</a>
             </div>
             <div className={sb.item}>
                 <a>Settings</a>

@@ -1,8 +1,8 @@
 import React from 'react';
-import mp from './myposts.module.css';
+
 import Post from './Post/Post';
 
-const MyPosts = () => {
+const MyPosts = (props) => {
     return (
         <div>
             <div>My Posts</div>

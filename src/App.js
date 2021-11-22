@@ -12,9 +12,9 @@ const App = () =>{
       <div className="app-wrapper">
             <Header/>
             <div className="app-wrapper-content">
-                <Route path='/profile' component={Profile}/>
-                <Route path='/dialogs/' component={Dialogs}/>
-                <Route path='/news' component={News}/>
+                <Route path='/profile' render={() => <Profile/>}/>
+                <Route path='/dialogs' render={() => <Dialogs/>}/>
+                <Route path='/news' render={() => <News/>}/>
             </div>
             <Sidebar/>
           </div>

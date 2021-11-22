@@ -7,6 +7,9 @@ const postsData = [
     {id:3, text:'l;dfjla;dfja;lsdfj'}
 ]
 
+
+let postElement = postsData.map( post => <Post text={post.text}/>)
+
 const MyPosts = (props) => {
     return (
         <div>
@@ -14,8 +17,7 @@ const MyPosts = (props) => {
             <textarea/>
             <button>Send</button>
             <div>
-                <Post message="hello world"/>
-                <Post message="ty pidor"/> 
+                {postElement}
             </div>
         </div>
     )

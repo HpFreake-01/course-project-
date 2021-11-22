@@ -4,7 +4,7 @@ import React from 'react';
 const Post = (props) => {
     return (
         <div>
-            {props.message}
+            <li>{props.text}</li>
         </div>
     )
 }

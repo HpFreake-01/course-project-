@@ -4,20 +4,21 @@ import Post from './Post/Post';
 
 const MyPosts = (props) => {
 
-    let postElement = props.postsData.map( post => <Post post={post} />);
+    let postElement = props.postsData.map( post => <Post text={post.text} />);
 
     let newPostElement = React.createRef();
 
-    let Click = () => {
-        let data = newPostElement.current.value;
-        alert(data);
+    let addPost = () => {
+        let textPost = newPostElement.current.value;
+        props.addPost(textPost);
+        newPostElement.current.value = ' ';
     }
 
     return (
         <div>
             <div>My Posts</div>
-            <textarea ref= {newPostElement}/>
-            <button onClick={ Click }>Send</button>
+            <textarea ref={newPostElement}/>
+            <button onClick={ addPost }>Send</button>
             <div>
                {postElement}
             </div>

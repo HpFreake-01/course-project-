@@ -7,7 +7,9 @@ import p from './profile.module.css'
 const Profile = (props) => {
     return (
         <div className={p.content}>
-           <MyPosts postsData={props.state.postData} addPost={props.addPost}/>
+           <MyPosts profilePage={props.profilePage} 
+           addPost={props.addPost} 
+           updateNewPostText={props.updateNewPostText}/>
         </div>
     )
 }

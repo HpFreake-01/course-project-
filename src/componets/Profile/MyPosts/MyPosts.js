@@ -4,20 +4,23 @@ import Post from './Post/Post';
 
 const MyPosts = (props) => {
 
-    let postElement = props.postsData.map( post => <Post text={post.text} />);
+    let postElement = props.profilePage.postData.map( post => <Post text={post.text} />);
 
     let newPostElement = React.createRef();
 
     let addPost = () => {
-        let textPost = newPostElement.current.value;
-        props.addPost(textPost);
-        newPostElement.current.value = ' ';
+        props.addPost();
+    }
+
+    let onPostChange = () =>{
+        let text = newPostElement.current.value;
+        props.updateNewPostText(text);
     }
 
     return (
         <div>
             <div>My Posts</div>
-            <textarea ref={newPostElement}/>
+            <textarea onChange={ onPostChange } ref={newPostElement} value={props.profilePage.newPostText}/>
             <button onClick={ addPost }>Send</button>
             <div>
                {postElement}

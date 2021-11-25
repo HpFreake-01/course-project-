@@ -3,7 +3,7 @@ import h from './header.module.css';
 
 const Header = () => {
     return (
-        <div className={h.header}>Header</div>
+        <div className={h.header}>Header update ready</div>
     )
 }
 

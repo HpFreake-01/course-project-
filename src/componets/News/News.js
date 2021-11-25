@@ -2,20 +2,25 @@ import React from 'react'
 import NewsElement from './NewsElement/NewsElement';
 
 const News = (props) => {
-    let newsElement = props.state.newsData.map( item => <NewsElement text={item.text}/>);
+    let newsElement = props.newsPage.newsData.map( item => <NewsElement text={item.text}/>);
 
     let refNewsText = React.createRef();
+
     let addNews = () =>{
-        let newsText = refNewsText.current.value;
-        props.addNews(newsText);
-        refNewsText.current.value = ' ';
+        props.addNews();
+    }
+    let onNewsChange = () => {
+        let text = refNewsText.current.value;
+        props.updateNewsText(text)
     }
     return (
         <div>
-            News
-            {newsElement}
-            <textarea ref={ refNewsText }/>
+            <div>News</div>
+            <textarea onChange={onNewsChange} ref={ refNewsText } value={props.newsPage.newNewsText}/>
             <button onClick={ addNews }>send</button>
+            <div>
+                {newsElement}
+            </div>
         </div>
     )
 }

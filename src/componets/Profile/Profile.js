@@ -2,10 +2,12 @@ import React from 'react';
 import MyPosts from './MyPosts/MyPosts';
 import p from './profile.module.css'
 
-const Profile = () => {
+
+
+const Profile = (props) => {
     return (
         <div className={p.content}>
-           <MyPosts/>
+           <MyPosts postsData={props.state.postData}/>
         </div>
     )
 }

@@ -4,7 +4,7 @@ import React from 'react';
 const Post = (props) => {
     return (
         <div>
-            <li>{props.text}</li>
+            <p>{props.post.text}</p>
         </div>
     )
 }

@@ -1,26 +1,27 @@
 import React from 'react';
+import { addPostActionCreator, updateNewPostTextActionCreator } from '../../../redux/state';
 import Post from './Post/Post';
+
 
 
 const MyPosts = (props) => {
 
     let postElement = props.profilePage.postData.map( post => <Post text={post.text} />);
 
-    let newPostElement = React.createRef();
+    let refPostElement = React.createRef();
 
     let addPost = () => {
-        props.addPost();
+        props.dispatch(addPostActionCreator());
     }
-
     let onPostChange = () =>{
-        let text = newPostElement.current.value;
-        props.updateNewPostText(text);
+        let text = refPostElement.current.value;
+        props.dispatch(updateNewPostTextActionCreator(text));
     }
 
     return (
         <div>
             <div>My Posts</div>
-            <textarea onChange={ onPostChange } ref={newPostElement} value={props.profilePage.newPostText}/>
+            <textarea onChange={onPostChange} ref={refPostElement} value={props.profilePage.newPostText}/>
             <button onClick={ addPost }>Send</button>
             <div>
                {postElement}

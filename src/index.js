@@ -9,16 +9,12 @@ import store from './redux/state';
 let rerenderEntireTree = (state) =>{
   ReactDOM.render(
     <React.StrictMode>
-      <App state={store.getState()} 
-            addPost={store.addPost.bind(store)} 
-            addNews={store.addNews.bind(store)} 
-            updateNewPostText={store.updateNewPostText.bind(store)}
-            updateNewsText={store.updateNewsText.bind(store)} />
+      <App state={store._state} dispatch={store.dispatch.bind(store)} />
     </React.StrictMode>,
     document.getElementById('root')
   );
 }
-rerenderEntireTree(store.getState);
+rerenderEntireTree(store.getState());
 
 reportWebVitals();
 

@@ -2,7 +2,7 @@ const ADD_NEWS = 'ADD-NEWS';
 const UPDATE_NEW_NEWS_TEXT = 'UPDATE-NEW-NEWS-TEXT';
 
 const newsReducer = (state, action) => {
-    
+
     switch(action.type) {
         case ADD_NEWS:
             let newNews = {
@@ -18,6 +18,13 @@ const newsReducer = (state, action) => {
         default:
             return state;
     }
+}
+
+export let addNewsActionCreator = () =>{
+    return {type:ADD_NEWS}
+}
+export let updateNewsTextActionCreator = (text) =>{
+    return {type: UPDATE_NEW_NEWS_TEXT, newText: text}
 }
 
 export default newsReducer;

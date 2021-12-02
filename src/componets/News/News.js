@@ -1,5 +1,5 @@
 import React from 'react'
-import { addNewsActionCreator, updateNewsTextActionCreator } from '../../redux/state';
+import { addNewsActionCreator, updateNewsTextActionCreator } from '../../redux/news-reducer';
 import NewsElement from './NewsElement/NewsElement';
 
 

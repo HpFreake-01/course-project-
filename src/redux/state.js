@@ -1,3 +1,7 @@
+import dialogsReducer from "./dialogs-reducer";
+import newsReducer from "./news-reducer";
+import profileReducer from "./profile-reducer";
+
 const ADD_POST = 'ADD-POST';
 const UPDATE_NEW_POST_TEXT= 'UPDATE-NEW-POST-TEXT';
 
@@ -50,37 +54,11 @@ let store = {
     this._callSubscriber = observer;
   },
   dispatch(action) {
-    if (action.type === 'ADD-POST') {
-      let newPost = {
-        id: 5,
-        text: this._state.profilePage.newPostText
-      }
-      this._state.profilePage.postData.push(newPost);
-      this._state.profilePage.newPostText = ' ';
-      this._callSubscriber(this._state);
-    } else if (action.type === 'UPDATE-NEW-POST-TEXT') {
-      this._state.profilePage.newPostText = action.newText;
-      this._callSubscriber(this._state);
-    } else if (action.type === 'ADD-NEWS') {
-      let newNews = {
-        id: 4,
-        text: this._state.newsPage.newNewsText
-      }
-      this._state.newsPage.newsData.push(newNews);
-      this._state.newsPage.newNewsText = ' ';
-      this._callSubscriber(this._state);
-    } else if (action.type === 'UPDATE-NEW-NEWS-TEXT') {
-      this._state.newsPage.newNewsText = action.newText;
-      this._callSubscriber(this._state);
-    } else if (action.type === SEND_MESSAGE) {
-      this._state.messagesPage.messageData.push(
-        {id:2, text: this._state.messagesPage.newMessageText});
-      this._state.messagesPage.newMessageText = ' ';
-      this._callSubscriber(this._state);
-    } else if (action.type === UPDATE_NEW_MESSAGE_BODY) {
-      this._state.messagesPage.newMessageText = action.newText;
-      this._callSubscriber(this._state);
-    }
+    this._state.profilePage = profileReducer(this._state.profilePage, action);
+    this._state.messagesPage = dialogsReducer(this._state.messagesPage, action);
+    this._state.newsPage = newsReducer(this._state.newsPage, action);
+
+    this._callSubscriber(this._state);
   }
 }
 

@@ -1,13 +1,7 @@
 import React from 'react'
+import { addNewsActionCreator, updateNewsTextActionCreator } from '../../redux/state';
 import NewsElement from './NewsElement/NewsElement';
 
-
-let addNewsActionCreator = () =>{
-    return {type:'ADD-NEWS'}
-}
-let updateNewsTextActionCreator = (text) =>{
-    return {type:'UPDATE-NEW-NEWS-TEXT', newText: text}
-}
 
 const News = (props) => {
     let newsElement = props.newsPage.newsData.map( item => <NewsElement text={item.text}/>);

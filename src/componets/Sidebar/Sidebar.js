@@ -14,6 +14,9 @@ const Sidebar = () => {
             <div className={sb.item}>
                 <NavLink to='/news'>News</NavLink>
             </div>
+            <div className={sb.item}>
+                <NavLink to='/users'>Users</NavLink>
+            </div>
         </div>
     )
 }

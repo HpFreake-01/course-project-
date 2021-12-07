@@ -7,20 +7,18 @@ const MyPosts = (props) => {
 
     let postElement = props.postData.map( post => <Post text={post.text} />);
 
-    let refPostElement = React.createRef();
-
     let onAddPost = () => {
-        props.addPost();
+        props.addPost();//вызов функций которые передались через props
     }
-    let onPostChange = () =>{
-        let text = refPostElement.current.value;
-        props.updateNewPostText(text);
+    let onPostChange = (event) =>{
+        let text = event.target.value;
+        props.updateNewPostText(text);//вызов функций которые передались через props и передача данных на уровень высше
     }
 
     return (
         <div>
             <div>My Posts</div>
-            <textarea onChange={onPostChange} ref={refPostElement} value={props.newPostText}/>
+            <textarea onChange={onPostChange} value={props.newPostText}/>
             <button onClick={ onAddPost }>Send</button>
             <div>
                {postElement}

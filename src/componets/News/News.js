@@ -8,8 +8,8 @@ const News = (props) => {
     let addNews = () =>{
         props.addNews();
     }
-    let newsChange = (e) => {
-        let text = e.target.value;
+    let newsChange = (event) => {
+        let text = event.target.value;
         props.updateNewsText(text);
     }
     return (

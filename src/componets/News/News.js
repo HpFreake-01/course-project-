@@ -1,24 +1,21 @@
 import React from 'react'
-import { addNewsActionCreator, updateNewsTextActionCreator } from '../../redux/news-reducer';
 import NewsElement from './NewsElement/NewsElement';
 
 
 const News = (props) => {
-    let newsElement = props.newsPage.newsData.map( item => <NewsElement text={item.text}/>);
-
-    let refNewsText = React.createRef();
+    let newsElement = props.newsData.map( item => <NewsElement text={item.text}/>);
 
     let addNews = () =>{
-        props.dispatch(addNewsActionCreator());
+        props.addNews();
     }
-    let onNewsChange = () => {
-        let text = refNewsText.current.value;
-        props.dispatch(updateNewsTextActionCreator(text));
+    let newsChange = (e) => {
+        let text = e.target.value;
+        props.updateNewsText(text);
     }
     return (
         <div>
             <div>News</div>
-            <textarea onChange={onNewsChange} ref={ refNewsText } value={props.newsPage.newNewsText}/>
+            <textarea onChange={newsChange} value={props.newNewsText}/>
             <button onClick={ addNews }>send</button>
             <div>
                 {newsElement}

@@ -1,10 +1,10 @@
 import { BrowserRouter, Route} from 'react-router-dom';
 import './app-wrapper.css';
-import Dialogs from './componets/Dialogs/Dialogs';
 import Profile from './componets/Profile/Profile'
-import News from './componets/News/News';
 import Header from './componets/Header/Header';
 import Sidebar from './componets/Sidebar/Sidebar';
+import DialogsContainer from './componets/Dialogs/DialogsContainer';
+import NewsContainer from './componets/News/NewsContainer';
 
 
 const App = (props) =>{
@@ -13,16 +13,9 @@ const App = (props) =>{
       <div className="app-wrapper">
             <Header/>
             <div className="app-wrapper-content">
-                <Route path='/profile' render={() => <Profile 
-                profilePage={props.state.profilePage} 
-                dispatch={props.dispatch}/>}/>
-                <Route path='/dialogs' render={() => <Dialogs 
-                dispatch={props.dispatch}
-                messagesPage={props.state.messagesPage}/>}/>
-                <Route path='/news' render={() => <News 
-                newsPage={props.state.newsPage} 
-                dispatch={props.dispatch}
-                />}/>
+                <Route path='/profile' render={() => <Profile />}/>
+                <Route path='/dialogs' render={() => <DialogsContainer />}/>
+                <Route path='/news' render={() => <NewsContainer />}/>
             </div>
             <Sidebar/>
           </div>

@@ -1,48 +1,49 @@
 import React from 'react'
 import style from './users.module.css'
+import * as axios from 'axios'
+import userPhoto from '../../images/user.jpg'
 
-export const Users = (props) => {
+class UsersC extends React.Component{
 
-    if(props.users.length === 0 ){
-        props.setUsers([
-            {id:1,
-                photoUrl:'https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Breezeicons-actions-22-im-user.svg/1200px-Breezeicons-actions-22-im-user.svg.png',
-                fullName:'max chuprun', status:'im a god', location:{city:'obryganca', country:'Portugalia'}, followed: true},
-            {id:2, 
-                photoUrl:'https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Breezeicons-actions-22-im-user.svg/1200px-Breezeicons-actions-22-im-user.svg.png',
-                fullName:'vlad pidarok', status:'im a bitch', location:{city:'Kiev', country:'Ukraine'}, followed: false}
-        ])
+    showUsers = () =>{
+        if(this.props.users.length === 0 ){
+            axios.get('https://social-network.samuraijs.com/api/1.0/users').then(response => {
+               this.props.setUsers(response.data.items)
+            })
+        }
     }
 
-    return (
-        <div>
-            {
-                props.users.map(user =><div key={user.id}>
+    render() {
+        return <div>
+        <button onClick={this.showUsers}>Show Users</button>
+        {
+            this.props.users.map(user =><div key={user.id}>
+                <span>
+                    <div>
+                        <img className={style.photo} alt='user' 
+                        src={userPhoto}/>
+                    </div>
+                    <div>
+                        {user.followed 
+                        ? <button onClick={() => {this.props.unfollow(user.id)}}>unfollow</button> 
+                        : <button onClick={() => {this.props.follow(user.id)}}>follow</button>
+                        }
+                    </div>
+                </span>
+                <span>
                     <span>
-                        <div>
-                            <img className={style.photo} alt='user' src={user.photoUrl}/>
-                        </div>
-                        <div>
-                            {user.followed 
-                            ? <button onClick={() => {props.unfollow(user.id)}}>unfollow</button> 
-                            : <button onClick={() => {props.follow(user.id)}}>follow</button>
-                            }
-                        </div>
+                        <div>{user.name}</div>
+                        <div>{user.status}</div>
                     </span>
                     <span>
-                        <span>
-                            <div>{user.fullName}</div>
-                            <div>{user.status}</div>
-                        </span>
-                        <span>
-                            <div>{user.location.city}</div>
-                            <div>{user.location.country}</div>
-                        </span>
+                        <div>{'user.location.city'}</div>
+                        <div>{'user.location.country'}</div>
                     </span>
-                </div>)
-            }
-        </div>
-    )
+                </span>
+            </div>)
+        }
+    </div>
+    }
 }
 
-export default Users;
+export default UsersC;

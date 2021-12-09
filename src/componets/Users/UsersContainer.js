@@ -32,7 +32,9 @@ class UsersApiComponent extends React.Component{
  
         return (
         <>
-            {this.props.isFetching ? <img src={preloader}/> : null}
+            <div>
+                {this.props.isFetching ? <img alt="preloader" src={preloader}/> : null}
+            </div>
             <Users 
                 users={this.props.users} 
                 onPageChanged={this.onPageChanged} 

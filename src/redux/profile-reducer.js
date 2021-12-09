@@ -1,5 +1,6 @@
 const ADD_POST = 'ADD-POST';
 const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
+const SET_PROFILE = 'SET_PROFILE';
 
 let initialState = {
     postData: [
@@ -7,7 +8,8 @@ let initialState = {
         {id:2, text:'dlkjf;aljdf;aldfjl;aj'},
         {id:3, text:'l;dfjla;dfja;lsdfj'}
       ],
-    newPostText: ''
+    newPostText: '',
+    profile:[]
 }
 
 const profileReducer = (state = initialState, action) => {
@@ -24,6 +26,11 @@ const profileReducer = (state = initialState, action) => {
                 ...state,
                 newPostText: action.newText //добавление занчений которые приходят с action 
             };
+        case SET_PROFILE:
+            return{
+                ...state,
+                profile: action.profile
+            }
         default:
             return state;
     }
@@ -33,6 +40,9 @@ export let addPostActionCreator = () => {
 }
 export let updateNewPostTextActionCreator = (text) => {
     return {type: UPDATE_NEW_POST_TEXT, newText: text } //action для получение значения с textarea (text) и слидением за состоянием
+}
+export let setUserProfile = (profile) =>{
+    return{type: SET_PROFILE, profile}
 }
 
 export default profileReducer;

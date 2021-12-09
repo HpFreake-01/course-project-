@@ -6,7 +6,8 @@ let initialState = {
         {id:1, name:'max'},
         {id:2, name:'vlad'},
         {id:3, name:'diana'},
-        {id:4, name:'ihor'}
+        {id:4, name:'ihor'},
+        {id:5, name:'DIMA'}
       ],
       
     messageData: [
@@ -23,7 +24,7 @@ const dialogsReducer = (state = initialState, action) =>{
             return{
                 ...state,
                 newMessageText:'',
-                messageData:[...state.messageData,{id:7,text: newText}]
+                messageData:[...state.messageData,{id:6,text: newText}]
             };
         case UPDATE_NEW_MESSAGE_BODY:
             return{

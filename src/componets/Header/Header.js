@@ -1,9 +1,17 @@
 import React from 'react';
-import h from './header.module.css';
+import { NavLink } from 'react-router-dom';
+import style from './header.module.css';
 
-const Header = () => {
+const Header = (props) => {
     return (
-        <div className={h.header}>Header update ready</div>
+        <div className={style.header}>
+            <div className={style.loginBlock}>
+                {props.isAuth ? props.login :<NavLink to='/login'>Login</NavLink>}
+                <div>
+                    {props.isAuth ? props.email : null}
+                </div>
+            </div>
+        </div>
     )
 }
 

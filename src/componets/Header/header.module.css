@@ -3,3 +3,8 @@
     background-color: blue;
     height: 70px;
 }
+
+.loginBlock {
+    float: right;
+    background-color: white;
+}

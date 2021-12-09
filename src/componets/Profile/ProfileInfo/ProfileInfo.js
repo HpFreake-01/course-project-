@@ -10,7 +10,8 @@ const ProfileInfo = (props) => {
                 {props.profile.userId}
             </div>
             <div>
-                {props.profile.aboutMe}
+                {props.profile.fullName}
+
             </div>
         </div>
     )

@@ -10,6 +10,7 @@ const Header = (props) => {
                 <div>
                     {props.isAuth ? props.email : null}
                 </div>
+                
             </div>
         </div>
     )

@@ -1,4 +1,5 @@
 import React from 'react'
+
 import d from './dialog.module.css'
 import DialogItem from './DialogsItem/DialogItem';
 import Message from './Message/Message';
@@ -18,7 +19,6 @@ const Dialogs = (props) => {
         let text = event.target.value;
         props.updateNewMessageBody(text);
     }
-
     return (
         <div className={d.dialogs}>
             <div className={d.dialogsItems}>

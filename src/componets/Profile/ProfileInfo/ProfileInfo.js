@@ -1,8 +1,8 @@
 import React from 'react'
 import userPhoto from '../../../images/user.jpg'
+import ProfileStatus from './ProfileStatus/ProfileStatus';
 
 const ProfileInfo = (props) => {
-
     return (
         <div>
             <img alt='user' src={userPhoto}/>
@@ -11,8 +11,9 @@ const ProfileInfo = (props) => {
             </div>
             <div>
                 {props.profile.fullName}
-
             </div>
+        
+            <ProfileStatus status={props.status} updateStatus={props.updateStatus}/>
         </div>
     )
 }

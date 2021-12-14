@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { addNewsActionCreator, updateNewsTextActionCreator } from '../../redux/news-reducer';
+import { addNewsActionCreator } from '../../redux/news-reducer';
 import News from './News';
 
 let mapStateToProps = (state) =>{
@@ -11,11 +11,8 @@ let mapStateToProps = (state) =>{
 
 let mapDispatchToProps = (dispatch) =>{
     return{
-        addNews:() =>{
-            dispatch(addNewsActionCreator())
-        },
-        updateNewsText:(text) =>{
-            dispatch(updateNewsTextActionCreator(text))
+        addNews:(newNewsText) =>{
+            dispatch(addNewsActionCreator(newNewsText))
         }
     }
 }

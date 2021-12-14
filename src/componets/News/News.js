@@ -1,27 +1,37 @@
 import React from 'react'
 import NewsElement from './NewsElement/NewsElement';
+import { Field, reduxForm } from 'redux-form'
 
 
 const News = (props) => {
     let newsElement = props.newsData.map( item => <NewsElement text={item.text}/>);
 
-    let addNews = () =>{
-        props.addNews();
+    let addNews = (values) =>{
+        props.addNews(values.newNewsText);
     }
-    let newsChange = (event) => {
-        let text = event.target.value;
-        props.updateNewsText(text);
-    }
+
     return (
         <div>
             <div>News</div>
-            <textarea onChange={newsChange} value={props.newNewsText}/>
-            <button onClick={ addNews }>send</button>
+            <AddNewNewsForm onSubmit={addNews} />
             <div>
                 {newsElement}
             </div>
         </div>
     )
 }
+
+const addNewNews = (props) =>{
+    return(
+        <form onSubmit={props.handleSubmit}>
+            <Field component={'textarea'} name='newNewsText'  />
+            <button>send</button>
+        </form>
+    )
+}
+
+const AddNewNewsForm = reduxForm({
+    form: 'NewsForm'
+})(addNewNews);
 
 export default News; 

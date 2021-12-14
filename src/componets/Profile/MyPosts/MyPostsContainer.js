@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { addPostActionCreator, updateNewPostTextActionCreator } from '../../../redux/profile-reducer';
+import { addPostActionCreator } from '../../../redux/profile-reducer';
 import MyPosts from './MyPosts';
 
 let mapStateToProps = (state) => { 
@@ -11,11 +11,8 @@ let mapStateToProps = (state) => {
 
 let mapDispatchToProps = (dispatch) =>{
     return{
-        updateNewPostText:(text) =>{ //название props функций которое будет получать компонета MyPosts и передача данных на уровень высше 
-            dispatch(updateNewPostTextActionCreator(text)); //import action функции и передача в нее значения textarea 
-        },
-        addPost:() => {
-            dispatch(addPostActionCreator()); 
+        addPost:(newNewsText) => {
+            dispatch(addPostActionCreator(newNewsText)); 
         }
     }
 }

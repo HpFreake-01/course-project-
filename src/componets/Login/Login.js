@@ -5,6 +5,7 @@ import { reduxForm, Field} from 'redux-form'
 import { loginUser } from '../../redux/auth-reducer';
 import { Input } from '../common/FormControl';
 import { required } from '../helpers/validators/validator';
+import style from '../common/formControl.module.css'
 
 const LoginForm = (props) => {
     return (
@@ -18,13 +19,14 @@ const LoginForm = (props) => {
             <div>
                 <Field placeholder={'Password'} 
                 validate={[required]} component={Input} 
-                name={'password'}/>
+                name={'password'} type={'password'}/>
             </div>
             <div>
             <Field type={'checkbox'} 
                 component={Input} 
                 name={'rememberMe'}/> remember me 
             </div>
+            {props.error && <div className={style.formSummeryError}>{props.error}</div>}
             <div>
                 <button>login</button>
             </div>
@@ -44,8 +46,6 @@ const Login = (props) => {
     if(props.isAuth){
         return <Redirect to={'/profile'} />
     }
-
-
     return (
         <>
             <h2>Login</h2>

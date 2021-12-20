@@ -7,12 +7,29 @@ import UsersContainer from './componets/Users/UsersContainer';
 import ProfileContainer from './componets/Profile/ProfileContainer';
 import HeaderComponent from './componets/Header/HeaderComponent';
 import Login from './componets/Login/Login';
+import React from 'react';
+import { connect } from 'react-redux';
+import { initializedApp } from './redux/app-reducer';
+import { compose } from 'redux';
+import Preloader from './componets/common/Preloader';
+//import { withRouter } from 'react-router';
 
 
-const App = (props) =>{
-  return(
-    <BrowserRouter>
-      <div className="app-wrapper">
+class App extends React.Component {
+  componentDidMount() {
+
+    this.props.initializedApp();
+
+  }
+  render() {
+
+    if(!this.props.initialized){
+      return <Preloader/>
+    }
+
+    return(
+      <BrowserRouter>
+        <div className="app-wrapper">
             <HeaderComponent/>
             <div className="app-wrapper-content">
                 <Route path='/profile/:userId?' render={() => <ProfileContainer />}/>
@@ -23,7 +40,17 @@ const App = (props) =>{
             </div>
             <Sidebar/>
           </div>
-    </BrowserRouter>
-  )
+      </BrowserRouter>
+    )
+  }
 }
-export default App;
+
+const mapStateToProps = (state) =>({
+  initialized: state.app.initialized,
+  isFetching: state.usersPage.isFetching
+})
+
+export default compose(
+  //withRouter,
+  connect(mapStateToProps, {initializedApp})(App)
+)

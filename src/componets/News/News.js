@@ -4,7 +4,7 @@ import { Field, reduxForm } from 'redux-form'
 
 
 const News = (props) => {
-    let newsElement = props.newsData.map( item => <NewsElement text={item.text}/>);
+    let newsElement = props.newsData.map( item => <NewsElement text={item.text} key={item.id} />);
 
     let addNews = (values) =>{
         props.addNews(values.newNewsText);

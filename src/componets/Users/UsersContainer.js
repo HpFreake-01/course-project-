@@ -1,8 +1,9 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { follow, setCurrentPage, unfollow, toggleFollowingProgress, getUsersThunkCreator} from '../../redux/users-reducer';
+import Preloader from '../common/Preloader';
 import Users from './Users'
-import preloader from '../../images/preload.svg'
+
 
 
 class UsersApiComponent extends React.Component{
@@ -21,7 +22,7 @@ class UsersApiComponent extends React.Component{
         return (
         <>
             <div>
-                {this.props.isFetching ? <img alt="preloader" src={preloader}/> : null}
+                {this.props.isFetching ? <Preloader/> : null}
             </div>
             <Users 
                 users={this.props.users} 

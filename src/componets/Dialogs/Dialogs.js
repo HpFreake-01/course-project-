@@ -11,8 +11,8 @@ import { Textarea } from '../common/FormControl';
 
 const Dialogs = (props) => {
 
-    let dialogsElement = props.dialogData.map(dialog => <DialogItem name={dialog.name} id={dialog.id}/>)
-    let messageElement = props.messageData.map(message => <Message text={message.text}/>)
+    let dialogsElement = props.dialogData.map(dialog => <DialogItem name={dialog.name} key={dialog.id} id={dialog.id}/>)
+    let messageElement = props.messageData.map(message => <Message key={message.id} text={message.text}/>)
 
     const addNewMessage = (values) =>{
         props.sendMessage(values.newMessageBody);

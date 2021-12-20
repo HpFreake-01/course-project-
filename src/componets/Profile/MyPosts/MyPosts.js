@@ -4,14 +4,22 @@ import { Field, reduxForm } from 'redux-form'
 import { required, maxLengthCreator } from '../../helpers/validators/validator'
 import { Textarea } from '../../common/FormControl';
 
+const maxLegth = maxLengthCreator(30);
 
+const AddPost = (props) =>{
+    return(
+        <form onSubmit={props.handleSubmit}>
+            <Field component={Textarea} name={'newPostText'} validate={[required, maxLegth]} />
+            <button>Send</button>
+        </form>
+    )
+}
 
-const maxLegth = maxLengthCreator(10);
 
 const MyPosts = (props) => {
-
-    let postElement = props.postData.map( post => <Post text={post.text} />);
-
+  
+      let postElement = props.postData.map( post => <Post key={post.id} text={post.text} />);
+    
     let onAddPost = (values) => {
         props.addPost(values.newPostText);//вызов функций которые передались через props
     }
@@ -23,15 +31,6 @@ const MyPosts = (props) => {
                {postElement}
             </div>
         </div>
-    )
-}
-
-const AddPost = (props) =>{
-    return(
-        <form onSubmit={props.handleSubmit}>
-            <Field component={Textarea} name={'newPostText'} validate={[required, maxLegth]} />
-            <button>Send</button>
-        </form>
     )
 }
 

@@ -12,7 +12,7 @@ import { connect } from 'react-redux';
 import { initializedApp } from './redux/app-reducer';
 import { compose } from 'redux';
 import Preloader from './componets/common/Preloader';
-//import { withRouter } from 'react-router';
+import { Redirect } from 'react-router';
 
 
 class App extends React.Component {
@@ -32,6 +32,7 @@ class App extends React.Component {
         <div className="app-wrapper">
             <HeaderComponent/>
             <div className="app-wrapper-content">
+                <Route exact path='/' render={() => <Redirect to={'/profile'}/>}/>
                 <Route path='/profile/:userId?' render={() => <ProfileContainer />}/>
                 <Route path='/dialogs' render={() => <DialogsContainer />}/>
                 <Route path='/news' render={() => <NewsContainer />}/>
@@ -39,6 +40,7 @@ class App extends React.Component {
                 <Route path='/login' render={() =><Login/>}/>
             </div>
             <Sidebar/>
+            
           </div>
       </BrowserRouter>
     )
